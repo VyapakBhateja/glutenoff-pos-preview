@@ -17,5 +17,5 @@ export function makeReceiptRaster(lines, { documentRef = globalThis.document, he
     const i = (y * W + x) * 4;
     if (rgba[i] < 128) data[y * rowBytes + (x >> 3)] |= 128 >> (x & 7);
   }
-  return { data, rowBytes, height: H };
+  return { data, rowBytes, width: W, height: H };
 }
