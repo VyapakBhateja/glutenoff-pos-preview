@@ -15,3 +15,10 @@ Every push to `main` deploys the static site. The workflow publishes this reposi
 ## Security note
 
 This repository contains frontend code and public browser configuration only. Do not add database dumps, service-role keys, private credentials, customer data, or operational exports.
+
+
+## QR release status
+
+Dynamic UPI receipt QR is part of the deployed preview build and has been physically validated by the project owner on the iPadOS + Bluefy + SEZNIK MiniX setup. The raster compatibility fix is included in the deployed preview `main`. The preview is a static hosting mirror, not the canonical development repository.
+
+Deployment evidence: [GitHub Actions run #4](https://github.com/VyapakBhateja/glutenoff-pos-preview/actions/runs/43740066394).
