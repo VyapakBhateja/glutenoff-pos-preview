@@ -12,7 +12,7 @@ export function buildReceiptLines(order, items, settings, money) {
   lines.push("--------------------------------", "TOTAL                    " + money(order.total));
   const terms = String(settings.terms_and_conditions || "").trim();
   const footer = String(settings.footer_text || "").trim();
-  const cleanLines = value => value.split(/\\r?\\n/).map(line => line.trim()).filter(Boolean);
+  const cleanLines = value => value.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
   const termsLines = cleanLines(terms);
   const footerLines = cleanLines(footer);
   if (termsLines.length || footerLines.length) lines.push("");
