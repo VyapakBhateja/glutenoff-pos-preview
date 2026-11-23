@@ -9,7 +9,7 @@ export function buildReceiptLines(order, items, settings, money) {
     const discount = Number(item.discount_amount || 0) > 0 ? " (-" + money(item.discount_amount) + ")" : "";
     lines.push(item.product_name + variant + " x" + item.quantity + " " + money(item.line_total) + discount, "");
   });
-  lines.push("--------------------------------", "TOTAL                    " + money(order.total), "");
+  lines.push("--------------------------------", "TOTAL                    " + money(order.total));
   const terms = String(settings.terms_and_conditions || "").trim();
   const footer = String(settings.footer_text || "").trim();
   if (terms) terms.split("\n").forEach(line => lines.push(line));
