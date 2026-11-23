@@ -1,6 +1,6 @@
 /** 384-dot canvas rasterizer; output layout remains 48 bytes per row. */
 export function makeReceiptRaster(lines, { documentRef = globalThis.document, headerLines = [], align = "center", indent = 0 } = {}) {
-  const W = 384, lineH = 34, pad = 12, all = [...headerLines, ...lines];
+  const W = 384, lineH = 34, pad = 12, all = [...headerLines, ...(headerLines.length ? [""] : []), ...lines];
   const H = Math.max(100, all.length * lineH + pad * 2);
   const canvas = documentRef.createElement("canvas"); canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, W, H);
