@@ -12,8 +12,11 @@ export function buildReceiptLines(order, items, settings, money) {
   lines.push("--------------------------------", "TOTAL                    " + money(order.total));
   const terms = String(settings.terms_and_conditions || "").trim();
   const footer = String(settings.footer_text || "").trim();
-  if (terms) terms.split("\n").forEach(line => lines.push(line));
-  if (footer) footer.split("\n").forEach(line => lines.push(line));
+  const cleanLines = value => value.split(/\\r?\\n/).map(line => line.trim()).filter(Boolean);
+  const termsLines = cleanLines(terms);
+  const footerLines = cleanLines(footer);
+  if (termsLines.length || footerLines.length) lines.push("");
+  lines.push(...termsLines, ...footerLines);
   return {
     headerLines: String(settings.receipt_header || settings.business_name || "").split("\n").map(line => line.trimEnd()).filter(Boolean),
     lines,
