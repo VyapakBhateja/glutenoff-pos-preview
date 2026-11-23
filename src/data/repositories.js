@@ -17,6 +17,7 @@ export function createRepositories(client) {
       async get(id) { const { data, error } = await client.from("orders").select("*").eq("id", id).single(); if (error) throw error; return data; },
       async listItems(id) { const { data, error } = await client.from("order_items").select("*").eq("order_id", id).order("created_at"); if (error) throw error; return data || []; },
       async create(payload) { const { data, error } = await client.rpc("create_order", payload); if (error) throw error; return data; },
+      async updatePaymentMethod(id, paymentMethod) { const { error } = await client.from("orders").update({ payment_method: paymentMethod }).eq("id", id); if (error) throw error; },
       async remove(id) { const { error } = await client.from("orders").delete().eq("id", id); if (error) throw error; }
     },
     variations: {
