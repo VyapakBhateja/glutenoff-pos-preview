@@ -5,7 +5,7 @@
 import { createSupabaseClient } from "./data/supabase-client.js";
 import { createRepositories } from "./data/repositories.js";
 import * as cart from "./domain/cart.js";
-import { createMiniXPrinter } from "./printer/minix-ble-printer.js";
+import { createMiniXPrinter } from "./printer/minix-ble-printer.js?v=20261123-2";
 import { makeReceiptRaster } from "./receipt/raster.js";
 import { printReceipt, buildReceiptLines } from "./receipt/receipt-composer.js";
 import { createQrMatrix } from "./payment-qr/encoder.js";
