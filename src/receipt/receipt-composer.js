@@ -7,9 +7,9 @@ export function buildReceiptLines(order, items, settings, money) {
   items.forEach(item => {
     const variant = item.variant_name ? " · " + item.variant_name : "";
     const discount = Number(item.discount_amount || 0) > 0 ? " (-" + money(item.discount_amount) + ")" : "";
-    lines.push(item.product_name + variant + " x" + item.quantity + " " + money(item.line_total) + discount);
+    lines.push(item.product_name + variant + " x" + item.quantity + " " + money(item.line_total) + discount, "");
   });
-  lines.push("--------------------------------", "TOTAL                    " + money(order.total), "", "Payment: " + String(order.payment_method).toUpperCase(), "");
+  lines.push("--------------------------------", "TOTAL                    " + money(order.total));
   String(settings.terms_and_conditions || "").split("\n").forEach(line => lines.push(line));
   lines.push("");
   String(settings.footer_text || "").split("\n").forEach(line => lines.push(line));
